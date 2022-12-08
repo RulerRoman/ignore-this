@@ -66,3 +66,6 @@ def check_cases(correct_disease,disease_list):
     else:
         print("wrong!")
 # example: check_cases(mumps,(measles, mumps))
+# lines 45-67 would be run as a complete cell, upon asking to start the game.
+# you then answer the question at the end with the code: check_cases(correct_disease,disease_list)
+# the first disease is the one you think is the most prevalent, after that you put the list of diseases you are choosing from.
