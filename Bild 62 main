@@ -5,3 +5,23 @@ import matplotlib.pyplot as plt
 disease_data = pd.read_csv('Disease Data.csv')
 disease_data.columns = [i.lower() for i in disease_data.columns]
 disease_data.head()
+
+def get_table(disease):
+  disease = disease.lower()
+  return disease_data[['year', disease]]
+  
+def get_graph(disease):
+    table = get_table(disease)
+    fig, ax = plt.subplots()
+    plt.plot(table)
+    ax.set_title(disease)
+    ax.set_xlabel('Year')
+    ax.set_ylabel('Number of Cases')
+    plt.show()
+   
+#get_graph('type disease name here')
+
+get_graph('measles')
+get_graph('mumps')
+get_graph('diphtheria')
+get_graph('pertussis')
