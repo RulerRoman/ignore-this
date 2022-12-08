@@ -15,7 +15,7 @@ def get_table(disease):
 def get_graph(disease):
     table = get_table(disease)
     fig, ax = plt.subplots()
-    plt.plot(table)
+    plt.plot(table['year'], table[disease])
     ax.set_title(disease)
     ax.set_xlabel('Year')
     ax.set_ylabel('Number of Cases')
