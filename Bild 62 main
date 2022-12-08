@@ -38,3 +38,5 @@ disease_df = load_data(disease_data)
 unique_disease_names = [i for i in disease_df if i != 'year']
 for disease_name in unique_disease_names:
   get_graph(disease_df, disease_name)
+
+get_graph(disease_df, 'measles')
