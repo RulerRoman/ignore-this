@@ -39,7 +39,7 @@ unique_disease_names = [i for i in disease_df if i != 'year']
 for disease_name in unique_disease_names:
   get_graph(disease_df, disease_name)
 
-get_graph(disease_df, 'measles')
+# example get_graph(disease_df, 'measles')
 
 diseases = ["measles", "diphtheria", "mumps", "pertussis"]
 game_df = rd.sample(diseases,2)
@@ -53,3 +53,14 @@ check('measles',game_df)
 check('mumps',game_df)
 check('pertussis',game_df)
 print("which disease was more prevalent during the year 2015?")
+
+measles = 214808
+diphtheria = 4535
+mumps = 385781
+pertussis = 156065
+def check_cases(correct_disease,disease_list):
+    if all(correct_disease >= x for x in disease_list):
+        print("correct!")
+    else:
+        print("wrong!")
+# example: check_cases(mumps,(measles, mumps))
