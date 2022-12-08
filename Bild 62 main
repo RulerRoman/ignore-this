@@ -42,6 +42,7 @@ for disease_name in unique_disease_names:
 
 # example get_graph(disease_df, 'measles')
 
+# the rest of the code revolves around the question game
 diseases = ["measles", "diphtheria", "mumps", "pertussis"]
 game_df = rd.sample(diseases,2)
 def check(disease, game_df):
