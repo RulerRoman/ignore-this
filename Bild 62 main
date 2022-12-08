@@ -1,28 +1,40 @@
+# Packages *
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-disease_data = pd.read_csv('Disease Data.csv')
-disease_data.columns = [i.lower() for i in disease_data.columns]
-disease_data.head()
+# Filepath of CSV file *
+disease_data = "Disease Data.csv" # Edit this line to change the filepath
 
-#grabs the data from the year column and the column of the specific disease
-def get_table(disease):
-  disease = disease.lower()
-  return disease_data[['year', disease]]
-  
-#graphs number of cases per year for specified disease
-def get_graph(disease):
-    table = get_table(disease)
-    fig, ax = plt.subplots()
-    plt.plot(table['year'], table[disease])
-    ax.set_title(disease)
-    ax.set_xlabel('Year')
-    ax.set_ylabel('Number of Cases')
-    plt.show()
-   
-#get_graph('type disease name here')
-get_graph('measles')
-get_graph('mumps')
-get_graph('diphtheria')
-get_graph('pertussis')
+# Functions *
+def load_data(disease_data): 
+	'''This function loads in the data into a pandas dataframe, and converts columns names to lowercase'''
+	disease_df = pd.read_csv(disease_data)
+	disease_df.columns = [i.lower() for i in disease_df.columns]
+	return disease_df
+
+def get_table(disease_df, disease_name):
+	'''Returns sub-dataframe of year plus specified disease'''
+	disease_name = disease_name.lower()
+	return disease_df[['year', disease_name]]
+
+def get_graph(disease_df, disease_name):
+  '''Generates a line plot of number of cases for specified disease'''
+  sub_disease_df = get_table(disease_df, disease_name)
+  fig, ax = plt.subplots()
+  plt.plot(sub_disease_df['year'], sub_disease_df[disease_name])
+  disease_name_capitalized = disease_name.capitalize()
+
+  # Plot formatting
+  ax.set_title(disease_name_capitalized)
+  ax.set_xlabel('Year')
+  ax.set_ylabel('Number of Cases')
+  plt.show()
+
+# Load Data *
+disease_df = load_data(disease_data)
+
+# Create a graph for each unique disease in dataset *
+unique_disease_names = [i for i in disease_df if i != 'year']
+for disease_name in unique_disease_names:
+  get_graph(disease_df, disease_name)
