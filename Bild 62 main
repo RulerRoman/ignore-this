@@ -6,10 +6,12 @@ disease_data = pd.read_csv('Disease Data.csv')
 disease_data.columns = [i.lower() for i in disease_data.columns]
 disease_data.head()
 
+#grabs the data from the year column and the column of the specific disease
 def get_table(disease):
   disease = disease.lower()
   return disease_data[['year', disease]]
   
+#graphs number of cases per year for specified disease
 def get_graph(disease):
     table = get_table(disease)
     fig, ax = plt.subplots()
@@ -20,7 +22,6 @@ def get_graph(disease):
     plt.show()
    
 #get_graph('type disease name here')
-
 get_graph('measles')
 get_graph('mumps')
 get_graph('diphtheria')
