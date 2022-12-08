@@ -2,4 +2,6 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-disease_data = np.loadtxt(fname='Disease Data.csv', delimiter=',')
+disease_data = pd.read_csv('Disease Data.csv')
+disease_data.columns = [i.lower() for i in disease_data.columns]
+disease_data.head()
